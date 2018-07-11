@@ -34,7 +34,7 @@ public class DeluxeCounter extends Plugin {
             try (InputStream in = getResourceAsStream("config.yml")) {
                 Files.copy(in, config.toPath());
             } catch (IOException ignored) { }
-            
+
         configuration = new ConfigManager(config).build();
         log("Loaded DeluxeCounter by FusionCoding");
 
