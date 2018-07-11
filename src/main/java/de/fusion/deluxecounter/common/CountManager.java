@@ -1,6 +1,9 @@
 package de.fusion.deluxecounter.common;
 
 import de.fusion.deluxecounter.DeluxeCounter;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.ProxyServer;
+import net.md_5.bungee.api.chat.TextComponent;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,6 +16,9 @@ public class CountManager {
 
     public CountManager() {
         threads = DeluxeCounter.getConfiguration().getPath("General.CountThreads").getInt();
+    }
+
+    public void init() {
         long diff = 1000 / threads;
         DeluxeCounter.getInstance().getExecutorService().submit(() -> {
             for (int i = 1; i <= threads; i++) {
@@ -26,6 +32,27 @@ public class CountManager {
             }
         });
         DeluxeCounter.getInstance().log("Started " + threads + " counter threads.");
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ignored) {
+            }
+
+            while (DeluxeCounter.getInstance().isRunning()) {
+                ProxyServer.getInstance().getPlayers().forEach(proxiedPlayer -> {
+                    if (DeluxeCounter.getInstance().getToggledPlayers().contains(proxiedPlayer.getName())) {
+                        proxiedPlayer.sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(DeluxeCounter.getConfiguration().getPath("General.ActionBar").getString()
+                                .replace("%prefix%", DeluxeCounter.getPrefix())
+                                .replace("%amount%", getBotsPerSecond() + "")));
+                    }
+                });
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException ignored) {
+                }
+            }
+        }, "DeluxeCounter#Notificator").start();
     }
 
     public void addConnection() {

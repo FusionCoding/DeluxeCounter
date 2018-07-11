@@ -48,8 +48,7 @@ public class ConfigManager extends ConfigAdapter implements ConfigAdapterInterfa
     public ConfigManager reload() {
         try {
             setConfiguration(ConfigurationProvider.getProvider(YamlConfiguration.class).load(getFile()));
-        } catch (IOException ignored) {
-        }
+        } catch (IOException ignored) {ignored.printStackTrace();}
         return this;
     }
 
@@ -112,6 +111,13 @@ public class ConfigManager extends ConfigAdapter implements ConfigAdapterInterfa
         @Override
         public String getString() {
             return ChatColor.translateAlternateColorCodes('&', configuration.getString(path));
+        }
+
+        @Override
+        public String getStringList() {
+            StringBuilder stringList = new StringBuilder();
+            getList().forEach(string -> stringList.append(string).append("\n"));
+            return ChatColor.translateAlternateColorCodes('&', stringList.toString());
         }
 
         @Override

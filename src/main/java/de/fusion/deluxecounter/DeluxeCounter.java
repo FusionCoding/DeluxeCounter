@@ -1,7 +1,9 @@
 package de.fusion.deluxecounter;
 
+import de.fusion.deluxecounter.commands.DeluxeCounterCommand;
 import de.fusion.deluxecounter.common.CountManager;
 import de.fusion.deluxecounter.config.ConfigManager;
+import de.fusion.deluxecounter.listener.PreLoginListener;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
@@ -10,6 +12,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,6 +28,8 @@ public class DeluxeCounter extends Plugin {
     private static ConfigManager configuration;
     private static CountManager countManager;
     private boolean running;
+    private List<String> toggledPlayers = new ArrayList<>();
+    private boolean allowConnections = true;
 
 
     /**
@@ -46,15 +52,20 @@ public class DeluxeCounter extends Plugin {
         if (!config.exists())
             try (InputStream in = getResourceAsStream("config.yml")) {
                 Files.copy(in, config.toPath());
-            } catch (IOException ignored) { }
+            } catch (IOException ignored) {
+            }
 
         configuration = new ConfigManager(config).build();
         log("Loaded DeluxeCounter by FusionCoding");
 
+        countManager = new CountManager();
+        countManager.init();
 
         PluginManager pm = ProxyServer.getInstance().getPluginManager();
+        pm.registerCommand(this, new DeluxeCounterCommand("deluxecounter"));
+        pm.registerListener(this, new PreLoginListener());
 
-        countManager = new CountManager();
+
     }
 
     /**
@@ -132,4 +143,31 @@ public class DeluxeCounter extends Plugin {
         return countManager;
     }
 
+    /**
+     * Method can be used to access the toggled players
+     *
+     * @return List
+     */
+    public List<String> getToggledPlayers() {
+        return toggledPlayers;
+    }
+
+    /**
+     * Used to determine if connections should be allowed
+     * Useful for testing
+     *
+     * @return boolean
+     */
+    public boolean isAllowingConnections() {
+        return allowConnections;
+    }
+
+    /**
+     * Used to set the status of allowing connections
+     *
+     * @param allowConnections
+     */
+    public void setAllowConnections(boolean allowConnections) {
+        this.allowConnections = allowConnections;
+    }
 }

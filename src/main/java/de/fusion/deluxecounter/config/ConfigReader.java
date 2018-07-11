@@ -33,6 +33,12 @@ public interface ConfigReader {
     String getString();
 
     /**
+     * Returns a list as string
+     * @return String
+     */
+    String getStringList();
+
+    /**
      * Returns the requested value as List
      * @return List
      */

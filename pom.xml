@@ -6,7 +6,7 @@
 
     <groupId>de.fusion</groupId>
     <artifactId>DeluxeCounter</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-RELEASE</version>
 
     <build>
         <directory>C:\Users\Tim\Desktop\Spigot 1.12.2 Server\export_deluxecounter</directory>
