@@ -9,7 +9,31 @@
 #
 # Author: FusionCoding
 # Version: 1.0
-# State: ALPHA
+# State: RELEASE
 #
 General:
  Prefix: "&bDeluxe&7Counter \xbb &7"
+
+ # Thread are split over one minute, 20 threads would result in a update every 50ms.
+ CountThreads: 20
+
+ # This message will be displayed in the actionbar.
+ ActionBar: "%prefix% &a%amount% connections per second &8[&e/dc&8]"
+
+Commands:
+  Help:
+    - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
+    - "&bDeluxe&7Counter &8» &7/dc about -> Show informations about the plugin"
+    - "&bDeluxe&7Counter &8 »&7/dc toggle (Player) -> Toggle notifications"
+    - "&bDeluxe&7Counter &8» &7/dc allow -> Allow connections"
+    - "&bDeluxe&7Counter &8» &7/dc disallow -> Disallow connections"
+    - "&bDeluxe&7Counter &8» &7/dc reload -> Forces a reload of the config"
+    - "&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-&e-&7-"
+  Toggle:
+    Enabled: "You &aenabled &7notifications for %player%"
+    Disabled: "You &cdisabled &7notifications for %player%"
+    NotOnline: "That Player is not online!"
+    Other:
+      Enabled: "You now receive notifications"
+      Disabled: "You not longer receive notifications"
+

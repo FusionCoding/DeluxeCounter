@@ -11,43 +11,84 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * This class is the main ConfigManager for BungeeCord
+ * This class handles everything and sets the actual methods
+ */
+
 public class ConfigManager extends ConfigAdapter implements ConfigAdapterInterface {
 
 
+    /**
+     * Initialize the ConfigManager
+     *
+     * @param f as configuration File
+     */
     public ConfigManager(File f) {
         super(f);
     }
 
+    /**
+     * Method builds the ConfigManager
+     *
+     * @return
+     */
     @Override
     public ConfigManager build() {
         reload();
         return this;
     }
 
+    /**
+     * Method reloads the configuration
+     *
+     * @return ConfigManager
+     */
     @Override
     public ConfigManager reload() {
         try {
             setConfiguration(ConfigurationProvider.getProvider(YamlConfiguration.class).load(getFile()));
-        } catch (IOException ignored) { }
+        } catch (IOException ignored) {
+        }
         return this;
     }
 
+    /**
+     * Method to set the path which needs to be written to
+     *
+     * @param path
+     * @return ConfigWriter
+     */
     @Override
     public ConfigWriter setPath(String path) {
         return new RealConfigWriter(getConfiguration(), path);
     }
 
+    /**
+     * Method to set the path which needs to be read.
+     *
+     * @param path
+     * @return ConfigReader
+     */
     @Override
     public ConfigReader getPath(String path) {
         return new RealConfigReader(getConfiguration(), path);
     }
 
-
+    /**
+     * Class defining methods to read the configuration
+     */
     private class RealConfigReader implements ConfigReader {
 
         private final Configuration configuration;
         private final String path;
 
+        /**
+         * Initializes the config reader
+         *
+         * @param configuration
+         * @param path
+         */
         private RealConfigReader(Configuration configuration, String path) {
             this.configuration = configuration;
             this.path = path;
@@ -84,10 +125,19 @@ public class ConfigManager extends ConfigAdapter implements ConfigAdapterInterfa
         }
     }
 
+    /**
+     * Class defining methods to read the configuration
+     */
     private class RealConfigWriter implements ConfigWriter {
         private final Configuration configuration;
         private final String path;
 
+        /**
+         * Initializes the config reader
+         *
+         * @param configuration
+         * @param path
+         */
         private RealConfigWriter(Configuration configuration, String path) {
             this.configuration = configuration;
             this.path = path;

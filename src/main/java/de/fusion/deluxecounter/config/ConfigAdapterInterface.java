@@ -3,6 +3,7 @@ package de.fusion.deluxecounter.config;
 public interface ConfigAdapterInterface {
 
 
+
     ConfigManager build();
 
     ConfigManager reload();
