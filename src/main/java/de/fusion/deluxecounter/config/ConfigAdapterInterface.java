@@ -3,14 +3,13 @@ package de.fusion.deluxecounter.config;
 public interface ConfigAdapterInterface {
 
 
+  ConfigManager build();
 
-    ConfigManager build();
+  ConfigManager reload();
 
-    ConfigManager reload();
+  ConfigWriter setPath(String path);
 
-    ConfigWriter setPath(String path);
-
-    ConfigReader getPath(String path);
+  ConfigReader getPath(String path);
 
 
 }
