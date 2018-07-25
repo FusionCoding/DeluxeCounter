@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>DeluxeCounter</artifactId>
+    <groupId>de.fusion</groupId>
+    <version>1.0-RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>deluxecounter-export</artifactId>
+
+  <build>
+    <directory>C:\Users\Tim\Desktop\Spigot 1.12.2 Server\export_deluxecounter</directory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <artifactSet>
+                <includes>
+                  <include>de.fusion:deluxecounter-spigot</include>
+                  <include>de.fusion:deluxecounter-core</include>
+                  <include>de.fusion:deluxecounter-bungee</include>
+                </includes>
+              </artifactSet>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>de.fusion</groupId>
+      <artifactId>deluxecounter-core</artifactId>
+      <version>1.0-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>de.fusion</groupId>
+      <artifactId>deluxecounter-bungee</artifactId>
+      <version>1.0-RELEASE</version>
+    </dependency>
+    <dependency>
+      <groupId>de.fusion</groupId>
+      <artifactId>deluxecounter-spigot</artifactId>
+      <version>1.0-RELEASE</version>
+    </dependency>
+  </dependencies>
+
+
+</project>

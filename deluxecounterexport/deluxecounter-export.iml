@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$USER_HOME$/Desktop/Spigot 1.12.2 Server/export_deluxecounterNEW/classes" />
-    <output-test url="file://$USER_HOME$/Desktop/Spigot 1.12.2 Server/export_deluxecounterNEW/test-classes" />
+    <output url="file://$USER_HOME$/Desktop/Spigot 1.12.2 Server/export_deluxecounter/classes" />
+    <output-test url="file://$USER_HOME$/Desktop/Spigot 1.12.2 Server/export_deluxecounter/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/src" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="deluxecountercore" />
+    <orderEntry type="module" module-name="deluxecounterbungee" />
+    <orderEntry type="module" module-name="deluxecounterspigot" />
   </component>
 </module>

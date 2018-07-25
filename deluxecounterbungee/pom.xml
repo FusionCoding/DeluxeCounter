@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>DeluxeCounter</artifactId>
+    <groupId>de.fusion</groupId>
+    <version>1.0-RELEASE</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>deluxecounter-bungee</artifactId>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>bungeecord-repo</id>
+      <url>https://oss.sonatype.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>md_5-snapshots</id>
+      <url>http://repo.md-5.net/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>net.md-5</groupId>
+      <artifactId>bungeecord-api</artifactId>
+      <version>1.12-SNAPSHOT</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>de.fusion</groupId>
+      <artifactId>deluxecounter-core</artifactId>
+      <version>LATEST</version>
+      <type>jar</type>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>

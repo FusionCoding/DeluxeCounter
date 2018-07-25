@@ -1,0 +1,10 @@
+name: DeluxeCounter
+version: 1.1
+main: de.fusion.deluxecounter.spigot.DeluxeCounter
+author: FusionCoding
+description: A lightweight BungeeCord plugin to monitor the connections per second.
+website: https://deluxenode.com/
+database: false
+commands:
+  deluxecounter:
+    aliases: [dc, counter]
